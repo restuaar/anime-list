@@ -12,13 +12,7 @@ export default async function Home() {
     <>
       <AnimeList
         animeData={topAnimeData}
-        title="Anime Populer"
-        linkTitle="Lihat semua"
-        linkHref="/populer"
-      />
-      <AnimeList
-        animeData={topAnimeData}
-        title="Anime Populer"
+        title="Populer Sekarang"
         linkTitle="Lihat semua"
         linkHref="/populer"
       />

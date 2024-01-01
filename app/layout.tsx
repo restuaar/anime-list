@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Gabarito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/utilities/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const gabarito = Gabarito({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "AnimeList",
@@ -17,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body
+        className={`${gabarito.className} bg-color-dark`}
+        suppressHydrationWarning={true}
+      >
         <Navbar />
         {children}
       </body>

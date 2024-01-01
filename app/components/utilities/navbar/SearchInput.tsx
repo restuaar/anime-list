@@ -9,17 +9,8 @@ export default function SearchInput() {
   const router = useRouter();
 
   const handleSearch = (event: any) => {
-    const keyword = searchRef.current!.value;
-    if (keyword !== "" && keyword !== null) {
-      event.preventDefault();
-      router.push(`/search/${keyword}`);
-    }
-  };
-
-  const handleEnterPress = (event: any) => {
-    const keyword = searchRef.current!.value;
-
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.type === "click") {
+      const keyword = searchRef.current!.value;
       if (keyword !== "" && keyword !== null) {
         event.preventDefault();
         router.push(`/search/${keyword}`);
@@ -33,10 +24,10 @@ export default function SearchInput() {
         type="text"
         name="search"
         id="search"
-        placeholder="..."
+        placeholder="search anime ..."
         className="p-2 w-full rounded"
         ref={searchRef}
-        onKeyDown={handleEnterPress}
+        onKeyDown={handleSearch}
       />
       <button className="absolute top-2 end-1.5" onClick={handleSearch}>
         <MagnifyingGlass size={24} />

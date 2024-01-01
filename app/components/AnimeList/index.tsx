@@ -8,7 +8,7 @@ export default async function AnimeList({
   linkHref,
 }: any) {
   return (
-    <section className="">
+    <section className="pb-4">
       <Header title={title} linkTitle={linkTitle} linkHref={linkHref} />
       <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
         {animeData.data.map((data: any) => (

@@ -10,7 +10,10 @@ interface AnimeCardProps {
 export default function AnimeCard({ id, title, image }: AnimeCardProps) {
   return (
     <>
-      <Link href={`/${id}`} className="shadow-xl cursor-pointer">
+      <Link
+        href={`/${id}`}
+        className="shadow-2xl cursor-pointer text-color-primary hover:text-color-accent transition-all"
+      >
         <Image
           src={image}
           alt={`image of ${title}`}
