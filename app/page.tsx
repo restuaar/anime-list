@@ -1,20 +1,18 @@
 import AnimeList from "./components/AnimeList";
-import { getNestedAnimeResponse, getAnimeResponse } from "@/libs/api-libs";
+import {
+  getNestedAnimeResponse,
+  getAnimeResponse,
+  getSliceAnime,
+} from "@/libs/api-libs";
 
 export default async function Page() {
   const topAnimeData = await getAnimeResponse("top/anime", "limit=8");
   let recommendedAnimeData = await getNestedAnimeResponse(
-    "recommendations/anime"
+    "recommendations/anime",
+    "entry"
   );
 
-  let x = Math.random() * recommendedAnimeData.length;
-  if (x > recommendedAnimeData.length - 4) {
-    x = recommendedAnimeData.length - 4;
-  }
-
-  recommendedAnimeData = {
-    data: recommendedAnimeData.slice(x, x + 4),
-  };
+  recommendedAnimeData = getSliceAnime(recommendedAnimeData, 4);
 
   return (
     <>

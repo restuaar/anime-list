@@ -10,7 +10,18 @@ export async function getAnimeResponse(resource: string, query: string = "") {
   return data;
 }
 
-export async function getNestedAnimeResponse(resource: string, prop: string = "") {
+export async function getNestedAnimeResponse(
+  resource: string,
+  prop: string = ""
+) {
   const response = await getAnimeResponse(resource);
-  return response.data.flatMap((item: any) => item.entry);
+  return response.data.flatMap((item: any) => item[prop]);
+}
+
+export function getSliceAnime(data: any, gap: number = 5) {
+  let x = Math.random() * (data.length - gap);
+
+  return {
+    data: data.slice(x, x + gap),
+  };
 }
