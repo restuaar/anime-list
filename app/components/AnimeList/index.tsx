@@ -9,11 +9,13 @@ export default async function AnimeList({
 }: any) {
   return (
     <section className="pb-4">
-      <Header title={title} linkTitle={linkTitle} linkHref={linkHref} />
+      {title ? (
+        <Header title={title} linkTitle={linkTitle} linkHref={linkHref} />
+      ) : null}
       <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
-        {animeData.data.map((data: any) => (
+        {animeData.data?.map((data: any, index: number) => (
           <AnimeCard
-            key={data.mal_id}
+            key={index}
             id={data.mal_id}
             title={data.title}
             image={data.images.webp.large_image_url}

@@ -2,9 +2,13 @@ import AnimeList from "@/app/components/AnimeList";
 import axios from "axios";
 
 export default async function Page({ params }: any) {
+  const { keyword } = params;
+
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const decodeKeyword = decodeURI(keyword);
+
   const searchAnime = await axios
-    .get(`${baseUrl}/anime?q=${params.keyword}`)
+    .get(`${baseUrl}/anime?q=${decodeKeyword}`)
     .then((data) => data.data)
     .catch((e) => console.log(e));
 
@@ -12,7 +16,7 @@ export default async function Page({ params }: any) {
     <>
       <AnimeList
         animeData={searchAnime}
-        title={`Pencarian untuk ${params.keyword}...`}
+        title={`Pencarian untuk ${decodeKeyword}...`}
       />
     </>
   );
