@@ -11,7 +11,7 @@ export default function AnimeCard({ id, title, image }: AnimeCardProps) {
   return (
     <>
       <Link
-        href={`/${id}`}
+        href={`/anime/${id}`}
         className="shadow-2xl cursor-pointer text-color-primary hover:text-color-accent transition-all"
       >
         <Image

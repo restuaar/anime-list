@@ -1,12 +1,20 @@
-import axios from "axios";
 import AnimeList from "./components/AnimeList";
+import { getNestedAnimeResponse, getAnimeResponse } from "@/libs/api-libs";
 
-export default async function Home() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const topAnimeData = await axios
-    .get(`${baseUrl}/top/anime?limit=8`)
-    .then((data) => data.data)
-    .catch((e) => console.log(e));
+export default async function Page() {
+  const topAnimeData = await getAnimeResponse("top/anime", "limit=8");
+  let recommendedAnimeData = await getNestedAnimeResponse(
+    "recommendations/anime"
+  );
+
+  let x = Math.random() * recommendedAnimeData.length;
+  if (x > recommendedAnimeData.length - 4) {
+    x = recommendedAnimeData.length - 4;
+  }
+
+  recommendedAnimeData = {
+    data: recommendedAnimeData.slice(x, x + 4),
+  };
 
   return (
     <>
@@ -16,6 +24,7 @@ export default async function Home() {
         linkTitle="Lihat semua"
         linkHref="/populer"
       />
+      <AnimeList animeData={recommendedAnimeData} title="Recommend Anime" />
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function Pagination({
         <button
           className="transition-all hover:text-color-accent hover:font-bold"
           onClick={() => {
-            setPage(page - 1);
+            setPage((prev: number) => prev - 1);
           }}
         >
           Prev
@@ -28,7 +28,7 @@ export default function Pagination({
         <button
           className="transition-all hover:text-color-accent hover:font-bold"
           onClick={() => {
-            setPage(page + 1);
+            setPage((prev: number) => prev + 1);
           }}
         >
           Next
