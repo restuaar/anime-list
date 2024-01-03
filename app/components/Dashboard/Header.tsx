@@ -11,7 +11,9 @@ interface HeaderProps {
 export default function Header({ title }: HeaderProps) {
   const router = useRouter();
 
-  const handleBack = (event: any) => {
+  const handleBack = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
     router.back();
   };
