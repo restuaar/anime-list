@@ -1,6 +1,6 @@
-// pages/api/auth/[...nextauth].ts
+
 import { authOption } from "@/libs/auth-option";
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 
 const handler = NextAuth(authOption);
 
