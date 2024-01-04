@@ -1,4 +1,6 @@
 import CollectionButton from "@/app/components/AnimeList/CollectionButton";
+import CommentBox from "@/app/components/AnimeList/CommentBox";
+import CommentInput from "@/app/components/AnimeList/CommentInput";
 import VideoPlayer from "@/app/components/utilities/VideoPlayer";
 import { getAnimeResponse } from "@/libs/api-libs";
 import authUserSession from "@/libs/auth-libs";
@@ -64,6 +66,19 @@ export default async function Page({ params: { id } }: any) {
           ></Image>
           <p className="text-justify text-xl">{anime.synopsis}</p>
         </div>
+        <div className="p-4">
+          <h3 className="text-color-primary text-xl mb-2 font-bold">Komentar</h3>
+          <CommentBox anime_mal_id={id} />
+          {user && (
+            <CommentInput
+              anime_mal_id={id}
+              user_email={user?.email}
+              username={user?.name}
+              anime_title={anime.title}
+            />
+          )}
+        </div>
+
         <div>
           <VideoPlayer youtubeId={anime.trailer.youtube_id} />
         </div>
